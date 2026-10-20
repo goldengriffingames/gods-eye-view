@@ -10,7 +10,7 @@ RUN npm run build
 FROM node:24.14.0-slim
 WORKDIR /app
 ENV NODE_ENV=production PUPPETEER_SKIP_DOWNLOAD=1 PORT=4173
-COPY --from=build /app /app
+COPY --from=build --chown=node:node /app /app
 USER node
 EXPOSE 4173
 CMD ["node","scripts/render-preview.mjs"]
