@@ -1,0 +1,17 @@
+# Deploy this Blueprint on a Render Free web service.
+# WARNING: This application is local-first and not security-hardened for a public service.
+# Do not configure paid API keys or use Provider Settings on a public instance.
+services:
+  - type: web
+    name: golden-griffin-gods-eye-view
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    dockerCommand: node scripts/render-start.mjs
+    healthCheckPath: /
+    envVars:
+      - key: PORT
+        value: "4173"
+      - key: GEV_KEY_SETUP_TRUSTED_PEERS
+        value: none
