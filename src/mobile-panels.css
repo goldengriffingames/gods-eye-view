@@ -1,0 +1,39 @@
+/* Mobile globe-first mode: no desktop changes and no overlay over attribution. */
+#mobile-panels-toggle { display: none; }
+@media (max-width: 720px) {
+  #mobile-panels-toggle {
+    display: block;
+    position: fixed;
+    z-index: 250;
+    top: max(68px, calc(env(safe-area-inset-top) + 62px));
+    right: max(12px, env(safe-area-inset-right));
+    min-height: 44px;
+    padding: 0 14px;
+    border: 1px solid rgba(0,212,255,.55);
+    border-radius: 10px;
+    background: rgba(6,18,28,.94);
+    color: #e8faff;
+    font: 600 12px/1.2 system-ui, sans-serif;
+    box-shadow: 0 4px 16px rgba(0,0,0,.45);
+    touch-action: manipulation;
+  }
+  #mobile-panels-toggle:focus-visible { outline: 2px solid #00d4ff; outline-offset: 3px; }
+  body.mobile-panels-hidden #left-panel-stack,
+  body.mobile-panels-hidden #right-context-rail,
+  body.mobile-panels-hidden #command-dock,
+  body.mobile-panels-hidden #data-panel,
+  body.mobile-panels-hidden #cctv-panel,
+  body.mobile-panels-hidden #scene-panel,
+  body.mobile-panels-hidden #location-bar,
+  body.mobile-panels-hidden #control-panel,
+  body.mobile-panels-hidden #gev-voice-control,
+  body.mobile-panels-hidden #title-bar,
+  body.mobile-panels-hidden #intel-hud,
+  body.mobile-panels-hidden #top-center-actions {
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+  /* Existing collapse buttons are suppressed by the desktop dock styling;
+     re-enable them on narrow viewports for individual panel minimization. */
+  #command-dock .panel-collapse-btn { display: inline-flex !important; }
+}
